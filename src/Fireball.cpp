@@ -92,7 +92,7 @@ void Fireball::execute(glm::vec2 position, int angle)
 {
 	//getTransform()->position = position;
 	Game::Instance()->getCurrentScene()->addChild(new Fireball(position, true, angle, false));
-	
+	SoundManager::Instance().playSound("Fireball");
 }
 
 void Fireball::stop()
@@ -102,7 +102,8 @@ void Fireball::stop()
 
 void Fireball::sound()
 {
-	if (m_running) {
+	if (m_running)
+	{
 
 	}
 }

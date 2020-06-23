@@ -150,7 +150,14 @@ void PlayScene::start()
 	m_pVictorVanHelsing->addAbility(new Sword());
 	addChild(m_pVictorVanHelsing);
 	
+	//Sound Effects
+	SoundManager::Instance().load("../Assets/audio/RegularAttack.wav", "RegularAttack", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/flame.ogg", "Fireball", SOUND_SFX);
 
+	//Music
+	SoundManager::Instance().load("../Assets/audio/roundone.wav", "BackgroundMusic", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("BackgroundMusic",-1,0);
+	SoundManager::Instance().setMusicVolume(20);
 }
 
 void PlayScene::collisions()

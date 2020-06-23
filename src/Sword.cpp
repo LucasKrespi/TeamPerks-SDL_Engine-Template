@@ -70,6 +70,7 @@ void Sword::execute(glm::vec2 position, int angle)
 	getTransform()->position = position;
 	m_angle = angle;
 	m_initialiazed = true;
+	SoundManager::Instance().playSound("RegularAttack");
 	start();
 }
 
@@ -80,6 +81,10 @@ void Sword::stop()
 
 void Sword::sound()
 {
+	if (m_running) 
+	{
+		
+	}
 }
 
 void Sword::animation()

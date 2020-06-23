@@ -48,6 +48,7 @@ void StartScene::handleEvents()
 
 	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_S))
 	{
+		SoundManager::Instance().stopMusic(0);
 		TheGame::Instance()->changeSceneState(PLAY_SCENE);
 	}
 
@@ -56,6 +57,10 @@ void StartScene::handleEvents()
 
 void StartScene::start()
 {
+	//Music
+	SoundManager::Instance().load("../Assets/audio/playStateMusic.mp3", "playStateMusic", SOUND_MUSIC);
+	SoundManager::Instance().setAllVolume(10);
+	SoundManager::Instance().playMusic("playStateMusic", -1, 0);
 
 	m_pTitleSprite = new StaticSprite("../Assets/textures/MonsterSlayerTitle.png", "titleSprite", 400.0f, 300.0f);
 	addChild(m_pTitleSprite);
@@ -66,6 +71,7 @@ void StartScene::start()
 	m_pPlayButton->addEventListener(CLICK, [&](Button* button)-> void
 	{
 		button->setActive(false);
+		SoundManager::Instance().stopMusic(0);
 		TheGame::Instance()->changeSceneState(PLAY_SCENE);
 	});
 	
